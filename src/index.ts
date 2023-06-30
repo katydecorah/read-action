@@ -1,4 +1,10 @@
-import { exportVariable, getInput, setFailed, summary } from "@actions/core";
+import {
+  exportVariable,
+  getInput,
+  setFailed,
+  setOutput,
+  summary,
+} from "@actions/core";
 import * as github from "@actions/github";
 import isbn from "node-isbn";
 import returnWriteFile from "./write-file";
@@ -104,7 +110,9 @@ export async function read() {
     library = sortByDate(library);
 
     await returnWriteFile(filename, library);
-    await summary.addRaw(summaryMarkown(library, dateFinished)).write();
+    const summaryRaw = summaryMarkown(library, dateFinished);
+    await summary.addRaw(summaryRaw).write();
+    setOutput("summary", summaryRaw);
   } catch (error) {
     setFailed(error);
   }

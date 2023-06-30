@@ -14573,7 +14573,9 @@ async function read() {
         }
         library = sortByDate(library);
         await returnWriteFile(filename, library);
-        await core.summary.addRaw(summaryMarkown(library, dateFinished)).write();
+        const summaryRaw = summaryMarkown(library, dateFinished);
+        await core.summary.addRaw(summaryRaw).write();
+        (0,core.setOutput)("summary", summaryRaw);
     }
     catch (error) {
         (0,core.setFailed)(error);
