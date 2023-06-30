@@ -4,11 +4,6 @@ export function s(num: number) {
   return num === 1 ? "" : "s";
 }
 
-export function and(array: string[]) {
-  const lf = new Intl.ListFormat("en");
-  return lf.format(array);
-}
-
 export function mAverageDays({ dates }: YearReview) {
   if (!dates || !dates.averageFinishTime) return [];
   return [
@@ -32,21 +27,17 @@ export function mMostReadMonth({ dates }: YearReview) {
 
 export function mGenre({ topGenres }: YearReview) {
   if (!topGenres || topGenres.length === 0) return [];
-  return [
-    `- **Top genre${s(topGenres.length)}:** ${and(
-      topGenres.map(({ name, count }) => `${name} (${count} book${s(count)})`)
-    )}`,
-  ];
+  const genres = topGenres.map(
+    ({ name, count }) => `\t- ${name} (${count} book${s(count)})`
+  );
+  return [`- **Top genre${s(topGenres.length)}:**`, ...genres];
 }
 
 export function mSameDay({ dates }: YearReview) {
   if (!dates || !dates.finishedInOneDay.count) return [];
-  const { count, books } = dates.finishedInOneDay;
-  return [
-    `- **Read in a day:** ${and(
-      books.map((book) => `${book.title} by ${book.authors}`)
-    )} (${count} book${s(count)})`,
-  ];
+  const { books } = dates.finishedInOneDay;
+  const booksList = books.map((book) => `\t- ${book.title} by ${book.authors}`);
+  return [`- **Read in a day:**`, ...booksList];
 }
 
 export function mAverageLength({ length }: YearReview) {
@@ -66,18 +57,16 @@ export function mAverageLength({ length }: YearReview) {
 
 export function mTopAuthors({ topAuthors }: YearReview) {
   if (!topAuthors || topAuthors.length === 0) return [];
-  return [
-    `- **Top author${s(topAuthors.length)}:** ${and(
-      topAuthors.map(({ name, count }) => `${name} (${count} book${s(count)})`)
-    )}`,
-  ];
+  const authorList = topAuthors.map(
+    ({ name, count }) => `\t- ${name} (${count} book${s(count)})`
+  );
+  return [`- **Top author`, ...authorList];
 }
 
 export function mTags({ tags }: YearReview) {
   if (!tags || tags.length === 0) return [];
-  return [
-    `- **Top tag${s(tags.length)}:** ${and(
-      tags.map(({ name, count }) => `${name} (${count} book${s(count)})`)
-    )}`,
-  ];
+  const tagList = tags.map(
+    ({ name, count }) => `\t- ${name} (${count} book${s(count)})`
+  );
+  return [`- **Top tags:**`, tagList];
 }

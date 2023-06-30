@@ -8,21 +8,25 @@ describe("yearReviewSummary", () => {
   it("works", () => {
     const result = yearReviewSummary(books, "2022");
     expect(result).toMatchInlineSnapshot(`
-      "
-      ## 2022 reading summary
+"
+## 2022 reading summary
 
-      - **Total books:** 7
-      - **Average read time:** 2.0 days
-      - **Month with most books:** September (2 books)
-      - **Month with least books:** January (1 book)
-      - **Top genres:** fiction (5 books) and social science (2 books)
-      - **Read in a day:** “Belly of the Beast” by Da'Shaun L. Harrison (1 book)
-      - **Average book length:** 251 pages
-      - **Longest book:** “The Candy House” by Jennifer Egan (352 pages)
-      - **Shortest book:** “Bliss Montage” by Ling Ma (145 pages)
-      - **Total pages read:** 1,756
-      - **Top tag:** recommend (3 books)"
-    `);
+- **Total books:** 7
+- **Average read time:** 2.0 days
+- **Month with most books:** September (2 books)
+- **Month with least books:** January (1 book)
+- **Top genres:**
+	- fiction (5 books)
+	- social science (2 books)
+- **Read in a day:**
+	- “Belly of the Beast” by Da'Shaun L. Harrison
+- **Average book length:** 251 pages
+- **Longest book:** “The Candy House” by Jennifer Egan (352 pages)
+- **Shortest book:** “Bliss Montage” by Ling Ma (145 pages)
+- **Total pages read:** 1,756
+- **Top tags:**
+	- recommend (3 books)"
+`);
   });
 
   it("no books", () => {
@@ -38,34 +42,42 @@ describe("yearReviewSummary", () => {
   it("no pagecount", () => {
     const result = yearReviewSummary(booksNoPageCount, "2022");
     expect(result).toMatchInlineSnapshot(`
-      "
-      ## 2022 reading summary
+"
+## 2022 reading summary
 
-      - **Total books:** 5
-      - **Average read time:** 1.0 days
-      - **Top genre:** fiction (5 books)
-      - **Read in a day:** “Book 1” by Other Author Name (1 book)
-      - **Top authors:** Author Name (3 books) and Other Author Name (2 books)"
-    `);
+- **Total books:** 5
+- **Average read time:** 1.0 days
+- **Top genre:**
+	- fiction (5 books)
+- **Read in a day:**
+	- “Book 1” by Other Author Name
+- **Top author
+	- Author Name (3 books)
+	- Other Author Name (2 books)"
+`);
   });
 
   it("works, lots", () => {
     const result = yearReviewSummary(booksLots, "2022");
     expect(result).toMatchInlineSnapshot(`
-      "
-      ## 2022 reading summary
+"
+## 2022 reading summary
 
-      - **Total books:** 13
-      - **Month with most books:** January (12 books)
-      - **Month with least books:** February (1 book)
-      - **Top genres:** fiction (9 books) and web sites (2 books)
-      - **Read in a day:** “Noor” by Nnedi Okorafor (1 book)
-      - **Average book length:** 303 pages
-      - **Longest book:** “Caste” by Isabel Wilkerson (678 pages)
-      - **Shortest book:** “You Should Write a Book” by Katel LeDû, Lisa Maria Marquis (100 pages)
-      - **Total pages read:** 3,938
-      - **Top tag:** recommend (3 books)"
-    `);
+- **Total books:** 13
+- **Month with most books:** January (12 books)
+- **Month with least books:** February (1 book)
+- **Top genres:**
+	- fiction (9 books)
+	- web sites (2 books)
+- **Read in a day:**
+	- “Noor” by Nnedi Okorafor
+- **Average book length:** 303 pages
+- **Longest book:** “Caste” by Isabel Wilkerson (678 pages)
+- **Shortest book:** “You Should Write a Book” by Katel LeDû, Lisa Maria Marquis (100 pages)
+- **Total pages read:** 3,938
+- **Top tags:**
+	- recommend (3 books)"
+`);
   });
 
   it("works, 2021", () => {
@@ -203,13 +215,17 @@ describe("summaryShort", () => {
 - **Average read time:** 2.0 days
 - **Month with most books:** September (2 books)
 - **Month with least books:** January (1 book)
-- **Top genres:** fiction (5 books) and social science (2 books)
-- **Read in a day:** “Belly of the Beast” by Da'Shaun L. Harrison (1 book)
+- **Top genres:**
+	- fiction (5 books)
+	- social science (2 books)
+- **Read in a day:**
+	- “Belly of the Beast” by Da'Shaun L. Harrison
 - **Average book length:** 251 pages
 - **Longest book:** “The Candy House” by Jennifer Egan (352 pages)
 - **Shortest book:** “Bliss Montage” by Ling Ma (145 pages)
 - **Total pages read:** 1,756
-- **Top tag:** recommend (3 books)"
+- **Top tags:**
+	- recommend (3 books)"
 `);
     expect(setOutputSpy.mock.calls[0]).toMatchInlineSnapshot(`
 [

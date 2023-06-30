@@ -14230,10 +14230,6 @@ function checkOutBook(bookParams, library) {
 function s(num) {
     return num === 1 ? "" : "s";
 }
-function and(array) {
-    const lf = new Intl.ListFormat("en");
-    return lf.format(array);
-}
 function mAverageDays({ dates }) {
     if (!dates || !dates.averageFinishTime)
         return [];
@@ -14253,17 +14249,15 @@ function mMostReadMonth({ dates }) {
 function mGenre({ topGenres }) {
     if (!topGenres || topGenres.length === 0)
         return [];
-    return [
-        `- **Top genre${s(topGenres.length)}:** ${and(topGenres.map(({ name, count }) => `${name} (${count} book${s(count)})`))}`,
-    ];
+    const genres = topGenres.map(({ name, count }) => `\t- ${name} (${count} book${s(count)})`);
+    return [`- **Top genre${s(topGenres.length)}:**`, ...genres];
 }
 function mSameDay({ dates }) {
     if (!dates || !dates.finishedInOneDay.count)
         return [];
-    const { count, books } = dates.finishedInOneDay;
-    return [
-        `- **Read in a day:** ${and(books.map((book) => `${book.title} by ${book.authors}`))} (${count} book${s(count)})`,
-    ];
+    const { books } = dates.finishedInOneDay;
+    const booksList = books.map((book) => `\t- ${book.title} by ${book.authors}`);
+    return [`- **Read in a day:**`, ...booksList];
 }
 function mAverageLength({ length }) {
     if (!length || !length.averageBookLength)
@@ -14279,16 +14273,14 @@ function mAverageLength({ length }) {
 function mTopAuthors({ topAuthors }) {
     if (!topAuthors || topAuthors.length === 0)
         return [];
-    return [
-        `- **Top author${s(topAuthors.length)}:** ${and(topAuthors.map(({ name, count }) => `${name} (${count} book${s(count)})`))}`,
-    ];
+    const authorList = topAuthors.map(({ name, count }) => `\t- ${name} (${count} book${s(count)})`);
+    return [`- **Top author`, ...authorList];
 }
 function mTags({ tags }) {
     if (!tags || tags.length === 0)
         return [];
-    return [
-        `- **Top tag${s(tags.length)}:** ${and(tags.map(({ name, count }) => `${name} (${count} book${s(count)})`))}`,
-    ];
+    const tagList = tags.map(({ name, count }) => `\t- ${name} (${count} book${s(count)})`);
+    return [`- **Top tags:**`, tagList];
 }
 
 ;// CONCATENATED MODULE: ./src/summary.ts
