@@ -12,7 +12,7 @@ import getBook from "./get-book";
 import { getBookStatus, getDates, sortByDate, toArray } from "./utils";
 import { checkOutBook } from "./checkout-book";
 import { BookStatus } from "./clean-book";
-import { summaryMarkown } from "./summary";
+import { summaryMarkown, summaryShort } from "./summary";
 import returnReadFile from "./read-file";
 import { updateBook } from "./update-book";
 import { validatePayload } from "./validate-payload";
@@ -110,9 +110,8 @@ export async function read() {
     library = sortByDate(library);
 
     await returnWriteFile(filename, library);
-    const summaryRaw = summaryMarkown(library, dateFinished);
-    await summary.addRaw(summaryRaw).write();
-    setOutput("summary", summaryRaw);
+    await summary.addRaw(summaryMarkown(library, dateFinished)).write();
+    setOutput("summary", summaryShort(library, dateFinished));
   } catch (error) {
     setFailed(error);
   }

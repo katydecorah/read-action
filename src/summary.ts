@@ -1,3 +1,4 @@
+import { setOutput } from "@actions/core";
 import { BookPayload } from ".";
 import { CleanBook } from "./clean-book";
 import {
@@ -25,6 +26,21 @@ ${
     : ""
 }
 `;
+}
+
+export function summaryShort(
+  library: CleanBook[],
+  dateFinished: BookPayload["date-finished"]
+): string | undefined {
+  const { BookStatus } = process.env;
+  if (BookStatus !== "finished" || !dateFinished) return;
+  const year = dateFinished.slice(0, 4);
+  const summary = yearReviewSummary(library, year);
+  if (summary) {
+    setOutput("summaryYear", year);
+    const [, , , ...rest] = summary.split("\n");
+    return rest.join("\n");
+  }
 }
 
 export function yearReviewSummary(books: CleanBook[], year: string) {

@@ -28,6 +28,7 @@ jest.mock("@actions/core", () => {
     exportVariable: jest.fn(),
     getInput: jest.fn(),
     warning: jest.fn(),
+    setOutput: jest.fn(),
     summary: {
       addRaw: () => ({
         write: jest.fn(),

@@ -1,4 +1,5 @@
-import { yearReviewSummary, yearReview } from "../summary";
+import { yearReviewSummary, yearReview, summaryShort } from "../summary";
+import * as core from "@actions/core";
 import books from "../../_data/read.json";
 import booksLots from "./library/lots.json";
 import booksNoPageCount from "./library/no-page-count.json";
@@ -188,5 +189,39 @@ describe("yearReview", () => {
 
       - **Total books:** 1"
     `);
+  });
+});
+
+describe("summaryShort", () => {
+  it("works", () => {
+    // mock process.env.BookStatus=finished
+    process.env.BookStatus = "finished";
+    const setOutputSpy = jest.spyOn(core, "setOutput");
+    const result = summaryShort(books, "2022-06-30");
+    expect(result).toMatchInlineSnapshot(`
+"- **Total books:** 7
+- **Average read time:** 2.0 days
+- **Month with most books:** September (2 books)
+- **Month with least books:** January (1 book)
+- **Top genres:** fiction (5 books) and social science (2 books)
+- **Read in a day:** “Belly of the Beast” by Da'Shaun L. Harrison (1 book)
+- **Average book length:** 251 pages
+- **Longest book:** “The Candy House” by Jennifer Egan (352 pages)
+- **Shortest book:** “Bliss Montage” by Ling Ma (145 pages)
+- **Total pages read:** 1,756
+- **Top tag:** recommend (3 books)"
+`);
+    expect(setOutputSpy.mock.calls[0]).toMatchInlineSnapshot(`
+[
+  "summaryYear",
+  "2022",
+]
+`);
+  });
+  it("works, no summary", () => {
+    // mock process.env.BookStatus=finished
+    process.env.BookStatus = "finished";
+    const result = summaryShort(books, "2002-06-30");
+    expect(result).toMatchInlineSnapshot(`undefined`);
   });
 });
