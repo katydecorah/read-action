@@ -51,7 +51,7 @@ describe("yearReviewSummary", () => {
 	- fiction (5 books)
 - **Read in a day:**
 	- “Book 1” by Other Author Name
-- **Top author
+- **Top authors:**
 	- Author Name (3 books)
 	- Other Author Name (2 books)"
 `);

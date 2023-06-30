@@ -14274,13 +14274,13 @@ function mTopAuthors({ topAuthors }) {
     if (!topAuthors || topAuthors.length === 0)
         return [];
     const authorList = topAuthors.map(({ name, count }) => `\t- ${name} (${count} book${s(count)})`);
-    return [`- **Top author`, ...authorList];
+    return [`- **Top authors:**`, ...authorList];
 }
 function mTags({ tags }) {
     if (!tags || tags.length === 0)
         return [];
     const tagList = tags.map(({ name, count }) => `\t- ${name} (${count} book${s(count)})`);
-    return [`- **Top tags:**`, tagList];
+    return [`- **Top tags:**`, ...tagList];
 }
 
 ;// CONCATENATED MODULE: ./src/summary.ts

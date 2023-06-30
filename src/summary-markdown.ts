@@ -60,7 +60,7 @@ export function mTopAuthors({ topAuthors }: YearReview) {
   const authorList = topAuthors.map(
     ({ name, count }) => `\t- ${name} (${count} book${s(count)})`
   );
-  return [`- **Top author`, ...authorList];
+  return [`- **Top authors:**`, ...authorList];
 }
 
 export function mTags({ tags }: YearReview) {
@@ -68,5 +68,5 @@ export function mTags({ tags }: YearReview) {
   const tagList = tags.map(
     ({ name, count }) => `\t- ${name} (${count} book${s(count)})`
   );
-  return [`- **Top tags:**`, tagList];
+  return [`- **Top tags:**`, ...tagList];
 }
