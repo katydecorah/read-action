@@ -14249,14 +14249,14 @@ function mMostReadMonth({ dates }) {
 function mGenre({ topGenres }) {
     if (!topGenres || topGenres.length === 0)
         return [];
-    const genres = topGenres.map(({ name, count }) => `\t- ${name} (${count} book${s(count)})`);
+    const genres = topGenres.map(({ name, count }) => `  - ${name} (${count} book${s(count)})`);
     return [`- **Top genre${s(topGenres.length)}:**`, ...genres];
 }
 function mSameDay({ dates }) {
     if (!dates || !dates.finishedInOneDay.count)
         return [];
     const { books } = dates.finishedInOneDay;
-    const booksList = books.map((book) => `\t- ${book.title} by ${book.authors}`);
+    const booksList = books.map((book) => `  - ${book.title} by ${book.authors}`);
     return [`- **Read in a day:**`, ...booksList];
 }
 function mAverageLength({ length }) {
@@ -14273,13 +14273,13 @@ function mAverageLength({ length }) {
 function mTopAuthors({ topAuthors }) {
     if (!topAuthors || topAuthors.length === 0)
         return [];
-    const authorList = topAuthors.map(({ name, count }) => `\t- ${name} (${count} book${s(count)})`);
+    const authorList = topAuthors.map(({ name, count }) => `  - ${name} (${count} book${s(count)})`);
     return [`- **Top authors:**`, ...authorList];
 }
 function mTags({ tags }) {
     if (!tags || tags.length === 0)
         return [];
-    const tagList = tags.map(({ name, count }) => `\t- ${name} (${count} book${s(count)})`);
+    const tagList = tags.map(({ name, count }) => `  - ${name} (${count} book${s(count)})`);
     return [`- **Top tags:**`, ...tagList];
 }
 

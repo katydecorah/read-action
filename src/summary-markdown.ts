@@ -28,7 +28,7 @@ export function mMostReadMonth({ dates }: YearReview) {
 export function mGenre({ topGenres }: YearReview) {
   if (!topGenres || topGenres.length === 0) return [];
   const genres = topGenres.map(
-    ({ name, count }) => `\t- ${name} (${count} book${s(count)})`
+    ({ name, count }) => `  - ${name} (${count} book${s(count)})`
   );
   return [`- **Top genre${s(topGenres.length)}:**`, ...genres];
 }
@@ -36,7 +36,7 @@ export function mGenre({ topGenres }: YearReview) {
 export function mSameDay({ dates }: YearReview) {
   if (!dates || !dates.finishedInOneDay.count) return [];
   const { books } = dates.finishedInOneDay;
-  const booksList = books.map((book) => `\t- ${book.title} by ${book.authors}`);
+  const booksList = books.map((book) => `  - ${book.title} by ${book.authors}`);
   return [`- **Read in a day:**`, ...booksList];
 }
 
@@ -58,7 +58,7 @@ export function mAverageLength({ length }: YearReview) {
 export function mTopAuthors({ topAuthors }: YearReview) {
   if (!topAuthors || topAuthors.length === 0) return [];
   const authorList = topAuthors.map(
-    ({ name, count }) => `\t- ${name} (${count} book${s(count)})`
+    ({ name, count }) => `  - ${name} (${count} book${s(count)})`
   );
   return [`- **Top authors:**`, ...authorList];
 }
@@ -66,7 +66,7 @@ export function mTopAuthors({ topAuthors }: YearReview) {
 export function mTags({ tags }: YearReview) {
   if (!tags || tags.length === 0) return [];
   const tagList = tags.map(
-    ({ name, count }) => `\t- ${name} (${count} book${s(count)})`
+    ({ name, count }) => `  - ${name} (${count} book${s(count)})`
   );
   return [`- **Top tags:**`, ...tagList];
 }
