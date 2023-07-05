@@ -11,6 +11,21 @@ describe("yearReviewSummary", () => {
 "
 ## 2022 reading summary
 
+| Month | Books read |
+| ---: | :--- |
+| January | 📗 | 
+| February |  | 
+| March |  | 
+| April |  | 
+| May |  | 
+| June |  | 
+| July |  | 
+| August |  | 
+| September | 📗📗 | 
+| October |  | 
+| November | 📗📗 | 
+| December | 📗📗 | 
+
 - **Total books:** 7
 - **Average read time:** 2.0 days
 - **Month with most books:** September (2 books)
@@ -45,6 +60,21 @@ describe("yearReviewSummary", () => {
 "
 ## 2022 reading summary
 
+| Month | Books read |
+| ---: | :--- |
+| January | 📗📗📗📗📗 | 
+| February |  | 
+| March |  | 
+| April |  | 
+| May |  | 
+| June |  | 
+| July |  | 
+| August |  | 
+| September |  | 
+| October |  | 
+| November |  | 
+| December |  | 
+
 - **Total books:** 5
 - **Average read time:** 1.0 days
 - **Top genre:**
@@ -62,6 +92,21 @@ describe("yearReviewSummary", () => {
     expect(result).toMatchInlineSnapshot(`
 "
 ## 2022 reading summary
+
+| Month | Books read |
+| ---: | :--- |
+| January | 📗📗📗📗📗📗📗📗📗📗📗📗 | 
+| February | 📗 | 
+| March |  | 
+| April |  | 
+| May |  | 
+| June |  | 
+| July |  | 
+| August |  | 
+| September |  | 
+| October |  | 
+| November |  | 
+| December |  | 
 
 - **Total books:** 13
 - **Month with most books:** January (12 books)
@@ -83,21 +128,23 @@ describe("yearReviewSummary", () => {
   it("works, 2021", () => {
     const result = yearReviewSummary(books, "2021");
     expect(result).toMatchInlineSnapshot(`
-      "
-      ## 2021 reading summary
+"
+## 2021 reading summary
 
-      - **Total books:** 2"
-    `);
+
+- **Total books:** 2"
+`);
   });
 
   it("works, 2020", () => {
     const result = yearReviewSummary(books, "2020");
     expect(result).toMatchInlineSnapshot(`
-      "
-      ## 2020 reading summary
+"
+## 2020 reading summary
 
-      - **Total books:** 2"
-    `);
+
+- **Total books:** 2"
+`);
   });
 });
 
@@ -105,66 +152,128 @@ describe("yearReview", () => {
   it("works", () => {
     const result = yearReview(books, "2022");
     expect(result).toMatchInlineSnapshot(`
+{
+  "count": 7,
+  "dates": {
+    "averageFinishTime": 2,
+    "byMonth": [
       {
-        "count": 7,
-        "dates": {
-          "averageFinishTime": 2,
-          "finishedInOneDay": {
-            "books": [
-              {
-                "authors": "Da'Shaun L. Harrison",
-                "isbn": "9781623175979",
-                "pageCount": 148,
-                "title": "“Belly of the Beast”",
-              },
-            ],
-            "count": 1,
-          },
-          "leastReadMonth": {
-            "count": 1,
-            "month": "January",
-          },
-          "mostReadMonth": {
-            "count": 2,
-            "month": "September",
-          },
+        "count": 1,
+        "month": "January",
+        "monthIndex": 1,
+      },
+      {
+        "count": 0,
+        "month": "February",
+        "monthIndex": 2,
+      },
+      {
+        "count": 0,
+        "month": "March",
+        "monthIndex": 3,
+      },
+      {
+        "count": 0,
+        "month": "April",
+        "monthIndex": 4,
+      },
+      {
+        "count": 0,
+        "month": "May",
+        "monthIndex": 5,
+      },
+      {
+        "count": 0,
+        "month": "June",
+        "monthIndex": 6,
+      },
+      {
+        "count": 0,
+        "month": "July",
+        "monthIndex": 7,
+      },
+      {
+        "count": 0,
+        "month": "August",
+        "monthIndex": 8,
+      },
+      {
+        "count": 2,
+        "month": "September",
+        "monthIndex": 9,
+      },
+      {
+        "count": 0,
+        "month": "October",
+        "monthIndex": 10,
+      },
+      {
+        "count": 2,
+        "month": "November",
+        "monthIndex": 11,
+      },
+      {
+        "count": 2,
+        "month": "December",
+        "monthIndex": 12,
+      },
+    ],
+    "finishedInOneDay": {
+      "books": [
+        {
+          "authors": "Da'Shaun L. Harrison",
+          "isbn": "9781623175979",
+          "pageCount": 148,
+          "title": "“Belly of the Beast”",
         },
-        "length": {
-          "averageBookLength": 251,
-          "longestBook": {
-            "authors": "Jennifer Egan",
-            "isbn": "9781476716763",
-            "pageCount": 352,
-            "title": "“The Candy House”",
-          },
-          "shortestBook": {
-            "authors": "Ling Ma",
-            "isbn": "9780374717124",
-            "pageCount": 145,
-            "title": "“Bliss Montage”",
-          },
-          "totalPages": 1756,
-        },
-        "tags": [
-          {
-            "count": 3,
-            "name": "recommend",
-          },
-        ],
-        "topAuthors": [],
-        "topGenres": [
-          {
-            "count": 5,
-            "name": "fiction",
-          },
-          {
-            "count": 2,
-            "name": "social science",
-          },
-        ],
-        "year": "2022",
-      }
-    `);
+      ],
+      "count": 1,
+    },
+    "leastReadMonth": {
+      "count": 1,
+      "month": "January",
+    },
+    "mostReadMonth": {
+      "count": 2,
+      "month": "September",
+    },
+  },
+  "length": {
+    "averageBookLength": 251,
+    "longestBook": {
+      "authors": "Jennifer Egan",
+      "isbn": "9781476716763",
+      "pageCount": 352,
+      "title": "“The Candy House”",
+    },
+    "shortestBook": {
+      "authors": "Ling Ma",
+      "isbn": "9780374717124",
+      "pageCount": 145,
+      "title": "“Bliss Montage”",
+    },
+    "totalPages": 1756,
+  },
+  "tags": [
+    {
+      "count": 3,
+      "name": "recommend",
+    },
+  ],
+  "topAuthors": [],
+  "topGenres": [
+    {
+      "count": 5,
+      "name": "fiction",
+    },
+    {
+      "count": 2,
+      "name": "social science",
+    },
+  ],
+  "year": "2022",
+}
+`);
   });
 
   it("one book", () => {
@@ -196,11 +305,12 @@ describe("yearReview", () => {
     `);
 
     expect(yearReviewSummary(book, "2022")).toMatchInlineSnapshot(`
-      "
-      ## 2022 reading summary
+"
+## 2022 reading summary
 
-      - **Total books:** 1"
-    `);
+
+- **Total books:** 1"
+`);
   });
 });
 
@@ -211,7 +321,22 @@ describe("summaryShort", () => {
     const setOutputSpy = jest.spyOn(core, "setOutput");
     const result = summaryShort(books, "2022-06-30");
     expect(result).toMatchInlineSnapshot(`
-"- **Total books:** 7
+"| Month | Books read |
+| ---: | :--- |
+| January | 📗 | 
+| February |  | 
+| March |  | 
+| April |  | 
+| May |  | 
+| June |  | 
+| July |  | 
+| August |  | 
+| September | 📗📗 | 
+| October |  | 
+| November | 📗📗 | 
+| December | 📗📗 | 
+
+- **Total books:** 7
 - **Average read time:** 2.0 days
 - **Month with most books:** September (2 books)
 - **Month with least books:** January (1 book)

@@ -14282,6 +14282,12 @@ function mTags({ tags }) {
     const tagList = tags.map(({ name, count }) => `  - ${name} (${count} book${s(count)})`);
     return [`- **Top tags:**`, ...tagList];
 }
+function mMonthTable({ dates }) {
+    if (!dates || !dates.byMonth)
+        return [];
+    const monthTable = dates.byMonth.map(({ month, count }) => `| ${month} | ${count > 0 ? "📗".repeat(count) : ""} | `);
+    return ["| Month | Books read |", "| ---: | :--- |", ...monthTable];
+}
 
 ;// CONCATENATED MODULE: ./src/summary.ts
 
@@ -14317,6 +14323,8 @@ function yearReviewSummary(books, year) {
         "",
         `## ${year} reading summary`,
         "",
+        ...mMonthTable(obj),
+        ``,
         `- **Total books:** ${obj.count}`,
         ...mAverageDays(obj),
         ...mMostReadMonth(obj),
@@ -14360,6 +14368,13 @@ function yearReview(books, year) {
         topAuthors,
         dates: {
             averageFinishTime,
+            byMonth: Object.keys(monthToWord)
+                .map((month) => ({
+                monthIndex: Number.parseInt(month),
+                month: monthToWord[month],
+                count: groupByMonth[month] || 0,
+            }))
+                .sort((a, b) => a.monthIndex - b.monthIndex),
             mostReadMonth: {
                 month: monthToWord[mostReadMonth],
                 count: booksThisYear.filter((f) => f.dateFinished?.startsWith(`${year}-${mostReadMonth}`)).length,

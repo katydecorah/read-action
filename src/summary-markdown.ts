@@ -70,3 +70,12 @@ export function mTags({ tags }: YearReview) {
   );
   return [`- **Top tags:**`, ...tagList];
 }
+
+export function mMonthTable({ dates }: YearReview) {
+  if (!dates || !dates.byMonth) return [];
+  const monthTable = dates.byMonth.map(
+    ({ month, count }) =>
+      `| ${month} | ${count > 0 ? "📗".repeat(count) : ""} | `
+  );
+  return ["| Month | Books read |", "| ---: | :--- |", ...monthTable];
+}

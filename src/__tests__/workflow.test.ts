@@ -205,17 +205,18 @@ describe("workflow", () => {
 
     expect(setFailedSpy).not.toHaveBeenCalled();
     expect(summarySpy.mock.calls[0]).toMatchInlineSnapshot(`
-      [
-        "# Updated library
+[
+  "# Updated library
 
-      Finished: “Luster”
+Finished: “Luster”
 
-      ## 2022 reading summary
+## 2022 reading summary
 
-      - **Total books:** 1
-      ",
-      ]
-    `);
+
+- **Total books:** 1
+",
+]
+`);
     expect(returnWriteFile.mock.calls[0]).toMatchInlineSnapshot(`
       [
         "my-library.json",

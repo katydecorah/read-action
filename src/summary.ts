@@ -9,6 +9,7 @@ import {
   mAverageLength,
   mTopAuthors,
   mTags,
+  mMonthTable,
 } from "./summary-markdown";
 import { capitalize } from "./utils";
 
@@ -50,6 +51,8 @@ export function yearReviewSummary(books: CleanBook[], year: string) {
     "",
     `## ${year} reading summary`,
     "",
+    ...mMonthTable(obj),
+    ``,
     `- **Total books:** ${obj.count}`,
     ...mAverageDays(obj),
     ...mMostReadMonth(obj),
@@ -104,6 +107,13 @@ export function yearReview(
     topAuthors,
     dates: {
       averageFinishTime,
+      byMonth: Object.keys(monthToWord)
+        .map((month) => ({
+          monthIndex: Number.parseInt(month),
+          month: monthToWord[month],
+          count: groupByMonth[month] || 0,
+        }))
+        .sort((a, b) => a.monthIndex - b.monthIndex),
       mostReadMonth: {
         month: monthToWord[mostReadMonth],
         count: booksThisYear.filter((f) =>
@@ -149,7 +159,12 @@ function getKeyFromSmallestValue(object) {
   return Object.keys(object).reduce((a, b) => (object[a] > object[b] ? b : a));
 }
 
-function groupBy(array, key) {
+function groupBy(
+  array,
+  key: string
+): {
+  [key: string]: number;
+} {
   return array
     .filter((b) => b[key])
     .map((b) => b[key])
@@ -168,6 +183,7 @@ export type YearReview = {
   topAuthors?: { name: string; count: number }[];
   dates?: {
     averageFinishTime: number;
+    byMonth: { monthIndex: number; month: string; count: number }[];
     mostReadMonth: { month: string; count: number };
     leastReadMonth: { month: string; count: number };
     finishedInOneDay: {
@@ -218,7 +234,9 @@ function bBooksThisYear(books: CleanBook[], year: string) {
     );
 }
 
-function bGroupByMonth(booksThisYear: CleanBook[]) {
+function bGroupByMonth(booksThisYear: CleanBook[]): {
+  [key: string]: number;
+} {
   return groupBy(
     booksThisYear.map((b) => {
       const match =
