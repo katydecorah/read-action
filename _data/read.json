@@ -277,5 +277,26 @@
     "thumbnail": "https://books.google.com/books/content?id=cVBTEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api&w=1280",
     "language": "en",
     "link": "https://play.google.com/store/books/details?id=cVBTEAAAQBAJ"
+  },
+  {
+    "isbn": "9781984818324",
+    "dateFinished": "2023-07-04",
+    "status": "finished",
+    "rating": "unrated",
+    "title": "Burnout",
+    "authors": [
+      "Emily Nagoski, PhD",
+      "Amelia Nagoski, DMA"
+    ],
+    "publishedDate": "2020-01-07",
+    "description": "NEW YORK TIMES BESTSELLER • “This book is a gift! I’ve been practicing their strategies, and it’s a total game-changer.”—Brené Brown, PhD, author of the #1 New York Times bestseller Dare to Lead This groundbreaking book explains why women experience burnout differently than men—and provides a simple, science-based plan to help women minimize stress, manage emotions, and live a more joyful life. Burnout. Many women in America have experienced it. What’s expected of women and what it’s really like to be a woman in today’s world are two very different things—and women exhaust themselves trying to close the gap between them. How can you “love your body” when every magazine cover has ten diet tips for becoming “your best self”? How do you “lean in” at work when you’re already operating at 110 percent and aren’t recognized for it? How can you live happily and healthily in a sexist world that is constantly telling you you’re too fat, too needy, too noisy, and too selfish? Sisters Emily Nagoski, PhD, and Amelia Nagoski, DMA, are here to help end the cycle of feeling overwhelmed and exhausted. Instead of asking us to ignore the very real obstacles and societal pressures that stand between women and well-being, they explain with compassion and optimism what we’re up against—and show us how to fight back. In these pages you’ll learn • what you can do to complete the biological stress cycle—and return your body to a state of relaxation • how to manage the “monitor” in your brain that regulates the emotion of frustration • how the Bikini Industrial Complex makes it difficult for women to love their bodies—and how to defend yourself against it • why rest, human connection, and befriending your inner critic are keys to recovering and preventing burnout With the help of eye-opening science, prescriptive advice, and helpful worksheets and exercises, all women will find something transformative in these pages—and will be empowered to create positive change. Emily and Amelia aren’t here to preach the broad platitudes of expensive self-care or insist that we strive for the impossible goal of “having it all.” Instead, they tell us that we are enough, just as we are—and that wellness, true wellness, is within our reach. NAMED ONE OF THE BEST BOOKS OF THE YEAR BY BOOKRIOT “Burnout is the gold standard of self-help books, delivering cutting-edge science with energy, empathy, and wit. The authors know exactly what’s going on inside your frazzled brain and body, and exactly what you can do to fix it. . . . Truly life-changing.”—Sarah Knight, New York Times bestselling author of Calm the F*ck Down",
+    "pageCount": 306,
+    "printType": "BOOK",
+    "categories": [
+      "Self-Help"
+    ],
+    "thumbnail": "https://books.google.com/books/content?id=DlnDDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "language": "en",
+    "link": "https://books.google.com/books/about/Burnout.html?hl=&id=DlnDDwAAQBAJ"
   }
 ]
