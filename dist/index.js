@@ -14256,7 +14256,7 @@ function mSameDay({ dates }) {
     if (!dates || !dates.finishedInOneDay.count)
         return [];
     const { books } = dates.finishedInOneDay;
-    const booksList = books.map((book) => `  - ${book.title} by ${book.authors}`);
+    const booksList = books.map((book) => `  - ${book.title} by ${book.authors} (${book.pageCount?.toLocaleString()} pages)`);
     return [`- **Read in a day:**`, ...booksList];
 }
 function mAverageLength({ length }) {

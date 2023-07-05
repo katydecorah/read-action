@@ -36,7 +36,12 @@ export function mGenre({ topGenres }: YearReview) {
 export function mSameDay({ dates }: YearReview) {
   if (!dates || !dates.finishedInOneDay.count) return [];
   const { books } = dates.finishedInOneDay;
-  const booksList = books.map((book) => `  - ${book.title} by ${book.authors}`);
+  const booksList = books.map(
+    (book) =>
+      `  - ${book.title} by ${
+        book.authors
+      } (${book.pageCount?.toLocaleString()} pages)`
+  );
   return [`- **Read in a day:**`, ...booksList];
 }
 

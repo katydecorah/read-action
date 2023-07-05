@@ -34,7 +34,7 @@ describe("yearReviewSummary", () => {
   - fiction (5 books)
   - social science (2 books)
 - **Read in a day:**
-  - “Belly of the Beast” by Da'Shaun L. Harrison
+  - “Belly of the Beast” by Da'Shaun L. Harrison (148 pages)
 - **Average book length:** 251 pages
 - **Longest book:** “The Candy House” by Jennifer Egan (352 pages)
 - **Shortest book:** “Bliss Montage” by Ling Ma (145 pages)
@@ -80,7 +80,7 @@ describe("yearReviewSummary", () => {
 - **Top genre:**
   - fiction (5 books)
 - **Read in a day:**
-  - “Book 1” by Other Author Name
+  - “Book 1” by Other Author Name (undefined pages)
 - **Top authors:**
   - Author Name (3 books)
   - Other Author Name (2 books)"
@@ -115,7 +115,7 @@ describe("yearReviewSummary", () => {
   - fiction (9 books)
   - web sites (2 books)
 - **Read in a day:**
-  - “Noor” by Nnedi Okorafor
+  - “Noor” by Nnedi Okorafor (224 pages)
 - **Average book length:** 303 pages
 - **Longest book:** “Caste” by Isabel Wilkerson (678 pages)
 - **Shortest book:** “You Should Write a Book” by Katel LeDû, Lisa Maria Marquis (100 pages)
@@ -344,7 +344,7 @@ describe("summaryShort", () => {
   - fiction (5 books)
   - social science (2 books)
 - **Read in a day:**
-  - “Belly of the Beast” by Da'Shaun L. Harrison
+  - “Belly of the Beast” by Da'Shaun L. Harrison (148 pages)
 - **Average book length:** 251 pages
 - **Longest book:** “The Candy House” by Jennifer Egan (352 pages)
 - **Shortest book:** “Bliss Montage” by Ling Ma (145 pages)
