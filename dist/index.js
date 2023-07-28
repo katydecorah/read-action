@@ -14288,6 +14288,14 @@ function mMonthTable({ dates }) {
     const monthTable = dates.byMonth.map(({ month, count }) => `| ${month} | ${count > 0 ? "📗".repeat(count) : ""} | `);
     return ["| Month | Books read |", "| ---: | :--- |", ...monthTable];
 }
+function mTopTen({ topRated }) {
+    if (!topRated || topRated.length === 0)
+        return [];
+    const recommended = topRated.filter((book) => book.recommended);
+    const notRecommended = topRated.filter((book) => !book.recommended);
+    const topTen = [...recommended, ...notRecommended].map(({ title, authors }) => `  - ${title} by ${authors}`);
+    return [`- **Top rated books:**`, ...topTen];
+}
 
 ;// CONCATENATED MODULE: ./src/summary.ts
 
@@ -14333,6 +14341,7 @@ function yearReviewSummary(books, year) {
         ...mAverageLength(obj),
         ...mTopAuthors(obj),
         ...mTags(obj),
+        ...mTopTen(obj),
     ];
     return summary.join("\n");
 }
@@ -14362,6 +14371,13 @@ function yearReview(books, year) {
     const averageBookLength = bookLengths.length > 0 ? Math.round(average(bookLengths)) : undefined;
     const totalPages = bookLengths.reduce((total, book) => book + total, 0);
     const tags = findTopItems(booksThisYear, "tags");
+    const topRated = booksThisYear
+        .filter((b) => b.rating === "⭐️⭐️⭐️⭐️⭐️")
+        .map((b) => ({
+        title: b.title,
+        authors: b.authors?.join(", "),
+        recommended: b.tags?.includes("recommend") ?? false,
+    }));
     return {
         year,
         count,
@@ -14396,6 +14412,7 @@ function yearReview(books, year) {
             totalPages,
         },
         tags,
+        topRated,
     };
 }
 function simpleData(book) {

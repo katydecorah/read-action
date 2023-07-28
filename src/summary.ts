@@ -10,6 +10,7 @@ import {
   mTopAuthors,
   mTags,
   mMonthTable,
+  mTopTen,
 } from "./summary-markdown";
 import { capitalize } from "./utils";
 
@@ -61,6 +62,7 @@ export function yearReviewSummary(books: CleanBook[], year: string) {
     ...mAverageLength(obj),
     ...mTopAuthors(obj),
     ...mTags(obj),
+    ...mTopTen(obj),
   ];
   return summary.join("\n");
 }
@@ -101,6 +103,14 @@ export function yearReview(
   );
   const tags = findTopItems(booksThisYear, "tags");
 
+  const topRated = booksThisYear
+    .filter((b) => b.rating === "⭐️⭐️⭐️⭐️⭐️")
+    .map((b) => ({
+      title: b.title,
+      authors: b.authors?.join(", "),
+      recommended: b.tags?.includes("recommend") ?? false,
+    }));
+
   return {
     year,
     count,
@@ -139,6 +149,7 @@ export function yearReview(
       totalPages,
     },
     tags,
+    topRated,
   };
 }
 
@@ -214,6 +225,11 @@ export type YearReview = {
     averageBookLength: number | undefined;
     totalPages: number | undefined;
   };
+  topRated?: {
+    title: string | undefined;
+    authors: string | undefined;
+    recommended: boolean;
+  }[];
 };
 
 function bBooksThisYear(books: CleanBook[], year: string) {

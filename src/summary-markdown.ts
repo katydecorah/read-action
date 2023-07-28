@@ -84,3 +84,13 @@ export function mMonthTable({ dates }: YearReview) {
   );
   return ["| Month | Books read |", "| ---: | :--- |", ...monthTable];
 }
+
+export function mTopTen({ topRated }: YearReview) {
+  if (!topRated || topRated.length === 0) return [];
+  const recommended = topRated.filter((book) => book.recommended);
+  const notRecommended = topRated.filter((book) => !book.recommended);
+  const topTen = [...recommended, ...notRecommended].map(
+    ({ title, authors }) => `  - ${title} by ${authors}`
+  );
+  return [`- **Top rated books:**`, ...topTen];
+}

@@ -40,7 +40,10 @@ describe("yearReviewSummary", () => {
 - **Shortest book:** “Bliss Montage” by Ling Ma (145 pages)
 - **Total pages read:** 1,756
 - **Top tags:**
-  - recommend (3 books)"
+  - recommend (2 books)
+- **Top rated books:**
+  - Belly of the Beast by Da'Shaun L. Harrison
+  - Bliss Montage by Ling Ma"
 `);
   });
 
@@ -256,7 +259,7 @@ describe("yearReview", () => {
   },
   "tags": [
     {
-      "count": 3,
+      "count": 2,
       "name": "recommend",
     },
   ],
@@ -269,6 +272,18 @@ describe("yearReview", () => {
     {
       "count": 2,
       "name": "social science",
+    },
+  ],
+  "topRated": [
+    {
+      "authors": "Da'Shaun L. Harrison",
+      "recommended": true,
+      "title": "Belly of the Beast",
+    },
+    {
+      "authors": "Ling Ma",
+      "recommended": false,
+      "title": "Bliss Montage",
     },
   ],
   "year": "2022",
@@ -350,7 +365,10 @@ describe("summaryShort", () => {
 - **Shortest book:** “Bliss Montage” by Ling Ma (145 pages)
 - **Total pages read:** 1,756
 - **Top tags:**
-  - recommend (3 books)"
+  - recommend (2 books)
+- **Top rated books:**
+  - Belly of the Beast by Da'Shaun L. Harrison
+  - Bliss Montage by Ling Ma"
 `);
     expect(setOutputSpy.mock.calls[0]).toMatchInlineSnapshot(`
 [
