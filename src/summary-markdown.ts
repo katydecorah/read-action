@@ -90,7 +90,7 @@ export function mTopTen({ topRated }: YearReview) {
   const recommended = topRated.filter((book) => book.recommended);
   const notRecommended = topRated.filter((book) => !book.recommended);
   const topTen = [...recommended, ...notRecommended].map(
-    ({ title, authors }) => `  - ${title} by ${authors}`
+    ({ title, authors, category }) => `  - ${title} by ${authors} (${category})`
   );
   return [`- **Top rated books:**`, ...topTen];
 }

@@ -109,6 +109,7 @@ export function yearReview(
       title: b.title,
       authors: b.authors?.join(", "),
       recommended: b.tags?.includes("recommend") ?? false,
+      category: b.categories?.[0],
     }));
 
   return {
@@ -229,6 +230,7 @@ export type YearReview = {
     title: string | undefined;
     authors: string | undefined;
     recommended: boolean;
+    category: string;
   }[];
 };
 
