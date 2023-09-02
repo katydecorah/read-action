@@ -77,7 +77,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Read
-        uses: katydecorah/read-action@v7.2.0
+        uses: katydecorah/read-action@v7.3.0
 
       - name: Commit updated read file
         run: |
@@ -149,7 +149,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Read
-        uses: katydecorah/read-action@v7.2.0
+        uses: katydecorah/read-action@v7.3.0
 
       - name: Download the book thumbnail
         if: env.BookThumbOutput != ''
@@ -244,7 +244,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Read
-        uses: katydecorah/read-action@v7.2.0
+        uses: katydecorah/read-action@v7.3.0
         with:
           thumbnail-width: 1280
 
