@@ -77,7 +77,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Read
-        uses: katydecorah/read-action@v7.1.0
+        uses: katydecorah/read-action@v7.2.0
 
       - name: Commit updated read file
         run: |
@@ -149,7 +149,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Read
-        uses: katydecorah/read-action@v7.1.0
+        uses: katydecorah/read-action@v7.2.0
 
       - name: Download the book thumbnail
         if: env.BookThumbOutput != ''
@@ -244,7 +244,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Read
-        uses: katydecorah/read-action@v7.1.0
+        uses: katydecorah/read-action@v7.2.0
         with:
           thumbnail-width: 1280
 
@@ -271,7 +271,7 @@ jobs:
 
 - `time-zone`: Your time zone. Default: `America/New_York`.
 
-- `required-metadata`: Required metadata properties. This can be used to make the action open a pull request if one of these values is missing data in the desired book instead of committing directly to a repository. Default: `title,pageCount,authors,description`.
+- `required-metadata`: Required metadata properties. This can be used to make the action open a pull request if one of these values is missing data in the desired book instead of committing directly to a repository. Default: `title,pageCount,authors,description,thumbnail`.
 
 - `thumbnail-width`: The width of the thumbnail image (for books sourced from Google Books). The default size is 128.
 

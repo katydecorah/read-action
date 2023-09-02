@@ -14151,7 +14151,7 @@ function cleanBook(options, book) {
         ...(description && {
             description: removeWrappedQuotes(description),
         }),
-        ...(pageCount && pageCount > 0 && { pageCount }),
+        ...(pageCount ? { pageCount } : { pageCount: 0 }),
         ...(printType && { printType }),
         ...(categories && { categories }),
         ...(imageLinks &&
@@ -14192,6 +14192,9 @@ function checkMetadata(book, bookIsbn) {
     }
     if (!book.description && requiredMetadata.includes("description")) {
         missingMetadata.push("description");
+    }
+    if (!book.imageLinks?.thumbnail && requiredMetadata.includes("thumbnail")) {
+        missingMetadata.push("thumbnail");
     }
     if (missingMetadata.length > 0) {
         (0,core.warning)(`Book does not have ${missingMetadata.join(", ")}`);
@@ -14605,8 +14608,10 @@ async function read() {
             const newBook = await getBook(bookParams);
             library.push(newBook);
             (0,core.exportVariable)(`BookTitle`, newBook.title);
-            (0,core.exportVariable)(`BookThumbOutput`, `book-${newBook.isbn}.png`);
-            (0,core.exportVariable)(`BookThumb`, newBook.thumbnail);
+            if (newBook.thumbnail) {
+                (0,core.exportVariable)(`BookThumbOutput`, `book-${newBook.isbn}.png`);
+                (0,core.exportVariable)(`BookThumb`, newBook.thumbnail);
+            }
         }
         library = sortByDate(library);
         await returnWriteFile(filename, library);

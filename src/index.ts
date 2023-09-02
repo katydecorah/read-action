@@ -103,8 +103,10 @@ export async function read() {
       const newBook = await getBook(bookParams);
       library.push(newBook);
       exportVariable(`BookTitle`, newBook.title);
-      exportVariable(`BookThumbOutput`, `book-${newBook.isbn}.png`);
-      exportVariable(`BookThumb`, newBook.thumbnail);
+      if (newBook.thumbnail) {
+        exportVariable(`BookThumbOutput`, `book-${newBook.isbn}.png`);
+        exportVariable(`BookThumb`, newBook.thumbnail);
+      }
     }
 
     library = sortByDate(library);

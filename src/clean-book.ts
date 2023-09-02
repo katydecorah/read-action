@@ -58,7 +58,7 @@ export default function cleanBook(options: BookParams, book: Book): CleanBook {
     ...(description && {
       description: removeWrappedQuotes(description),
     }),
-    ...(pageCount && pageCount > 0 && { pageCount }),
+    ...(pageCount ? { pageCount } : { pageCount: 0 }),
     ...(printType && { printType }),
     ...(categories && { categories }),
     ...(imageLinks &&
@@ -108,6 +108,9 @@ function checkMetadata(book: Book, bookIsbn: string) {
   }
   if (!book.description && requiredMetadata.includes("description")) {
     missingMetadata.push("description");
+  }
+  if (!book.imageLinks?.thumbnail && requiredMetadata.includes("thumbnail")) {
+    missingMetadata.push("thumbnail");
   }
   if (missingMetadata.length > 0) {
     warning(`Book does not have ${missingMetadata.join(", ")}`);
