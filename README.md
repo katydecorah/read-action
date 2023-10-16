@@ -74,7 +74,7 @@ jobs:
     name: Read
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Read
         uses: katydecorah/read-action@v7.3.0
@@ -146,7 +146,7 @@ jobs:
     name: Read
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Read
         uses: katydecorah/read-action@v7.3.0
@@ -241,7 +241,7 @@ jobs:
     name: Read
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Read
         uses: katydecorah/read-action@v7.3.0

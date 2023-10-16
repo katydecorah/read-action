@@ -2,7 +2,7 @@ name: Read
 author: Katy DeCorah
 description: Looks up books information given an issue with the title of an ISBN.
 runs:
-  using: node16
+  using: node20
   main: dist/index.js
 branding:
   icon: book
