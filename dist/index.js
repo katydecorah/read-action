@@ -14296,7 +14296,7 @@ function mTopTen({ topRated }) {
         return [];
     const recommended = topRated.filter((book) => book.recommended);
     const notRecommended = topRated.filter((book) => !book.recommended);
-    const topTen = [...recommended, ...notRecommended].map(({ title, authors }) => `  - ${title} by ${authors}`);
+    const topTen = [...recommended, ...notRecommended].map(({ title, authors, category }) => `  - ${title} by ${authors} (${category})`);
     return [`- **Top rated books:**`, ...topTen];
 }
 
@@ -14380,6 +14380,7 @@ function yearReview(books, year) {
         title: b.title,
         authors: b.authors?.join(", "),
         recommended: b.tags?.includes("recommend") ?? false,
+        category: b.categories?.[0],
     }));
     return {
         year,
@@ -14608,6 +14609,12 @@ async function read() {
             const newBook = await getBook(bookParams);
             library.push(newBook);
             (0,core.exportVariable)(`BookTitle`, newBook.title);
+            if (bookStatus === "started") {
+                // unless tag contains "hide"
+                if (!newBook.tags?.includes("hide")) {
+                    (0,core.setOutput)("nowReading", newBook);
+                }
+            }
             if (newBook.thumbnail) {
                 (0,core.exportVariable)(`BookThumbOutput`, `book-${newBook.isbn}.png`);
                 (0,core.exportVariable)(`BookThumb`, newBook.thumbnail);

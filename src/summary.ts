@@ -227,10 +227,10 @@ export type YearReview = {
     totalPages: number | undefined;
   };
   topRated?: {
-    title: string | undefined;
-    authors: string | undefined;
-    recommended: boolean;
-    category: string;
+    title?: string;
+    authors?: string | undefined;
+    recommended?: boolean;
+    category?: string;
   }[];
 };
 

@@ -103,6 +103,14 @@ export async function read() {
       const newBook = await getBook(bookParams);
       library.push(newBook);
       exportVariable(`BookTitle`, newBook.title);
+
+      if (bookStatus === "started") {
+        // unless tag contains "hide"
+        if (!newBook.tags?.includes("hide")) {
+          setOutput("nowReading", newBook);
+        }
+      }
+
       if (newBook.thumbnail) {
         exportVariable(`BookThumbOutput`, `book-${newBook.isbn}.png`);
         exportVariable(`BookThumb`, newBook.thumbnail);
