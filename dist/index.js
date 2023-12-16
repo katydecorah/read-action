@@ -35666,7 +35666,15 @@ async function read() {
             library.push(newBook);
             (0,core.exportVariable)(`BookTitle`, newBook.title);
             if (bookStatus === "started") {
-                (0,core.setOutput)("nowReading", newBook);
+                const thisYear = dateStarted?.split("-")[0];
+                const booksFinishedThisYear = library.filter((book) => book.dateFinished?.split("-")[0] === thisYear).length;
+                (0,core.setOutput)("nowReading", {
+                    title: newBook.title,
+                    description: newBook.description,
+                    isbn: newBook.isbn,
+                    thumbnail: newBook.thumbnail,
+                    bookNumber: booksFinishedThisYear + 1,
+                });
             }
             if (newBook.thumbnail) {
                 (0,core.exportVariable)(`BookThumbOutput`, `book-${newBook.isbn}.png`);

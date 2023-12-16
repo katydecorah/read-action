@@ -105,11 +105,17 @@ export async function read() {
       exportVariable(`BookTitle`, newBook.title);
 
       if (bookStatus === "started") {
+        const thisYear = dateStarted?.split("-")[0];
+        const booksFinishedThisYear = library.filter(
+          (book) => book.dateFinished?.split("-")[0] === thisYear
+        ).length;
+
         setOutput("nowReading", {
           title: newBook.title,
           description: newBook.description,
           isbn: newBook.isbn,
           thumbnail: newBook.thumbnail,
+          bookNumber: booksFinishedThisYear + 1,
         });
       }
 
